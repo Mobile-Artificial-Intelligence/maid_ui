@@ -1,7 +1,7 @@
 name: maid_ui
-description: "A new Flutter package project."
+description: "A collection of flutter widgets helpful for creating a Mobile AI app"
 version: 0.0.1
-homepage:
+homepage: "https://github.com/danemadsen/maid_ui"
 
 environment:
   sdk: '>=3.3.0 <4.0.0'
