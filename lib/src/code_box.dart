@@ -10,53 +10,54 @@ class CodeBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(5),
-      child: Container(
-        color: Colors.black,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.primary,
-              ),
-              height: 25,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text(
-                    'Code',
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.primary,
+            ),
+            height: 25,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Code',
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.onPrimary,
+                    fontSize: 12,
+                  ),
+                ),
+                TextButton.icon(
+                  // Use TextButton.icon to integrate text and icon in the same button
+                  icon: Icon(Icons.content_paste_rounded, color: Theme.of(context).colorScheme.onPrimary, size: 15),
+                  label: Text(
+                    'Copy Code',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: Theme.of(context).colorScheme.onPrimary,
                       fontSize: 12,
                     ),
                   ),
-                  TextButton.icon(
-                    // Use TextButton.icon to integrate text and icon in the same button
-                    icon: Icon(Icons.content_paste_rounded, color: Theme.of(context).colorScheme.onPrimary, size: 15),
-                    label: Text(
-                      'Copy Code',
-                      style: TextStyle(
-                        color: Theme.of(context).colorScheme.onPrimary,
-                        fontSize: 12,
-                      ),
-                    ),
-                    onPressed: () {
-                      Clipboard.setData(ClipboardData(text: code));
+                  onPressed: () {
+                    Clipboard.setData(ClipboardData(text: code));
 
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text("Code copied to clipboard!")),
-                      );
-                    },
-                    style: TextButton.styleFrom(
-                      padding: EdgeInsets.zero, // Adjust padding as needed
-                      minimumSize: const Size(10, 10), // Adjust size as needed
-                    ),
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text("Code copied to clipboard!")),
+                    );
+                  },
+                  style: TextButton.styleFrom(
+                    padding: EdgeInsets.zero, // Adjust padding as needed
+                    minimumSize: const Size(10, 10), // Adjust size as needed
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-            SingleChildScrollView(
+          ),
+          Container(
+            width: double.infinity,
+            color: Colors.black,
+            child: SingleChildScrollView(
               padding: const EdgeInsets.all(10.0),
               scrollDirection: Axis.horizontal,  // Allow horizontal scrolling
               child: SelectableText(
@@ -67,9 +68,9 @@ class CodeBox extends StatelessWidget {
                 ),
               ),
             ),
-          ],
-        ),
-      ),
+          )
+        ],
+      )
     );
   }
 }
