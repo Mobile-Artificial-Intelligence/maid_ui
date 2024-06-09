@@ -47,7 +47,7 @@ class TypingIndicatorState extends State<TypingIndicator>
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   color: Color.lerp(
-                    Theme.of(context).colorScheme.background,
+                    Theme.of(context).colorScheme.surface,
                     Theme.of(context).colorScheme.secondary,
                     circleColorPercent,
                   ),
